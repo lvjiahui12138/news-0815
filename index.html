@@ -4,19 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>纸间重生：校园二手教材循环的生态重构之路</title>
-    <!-- 外部资源引入 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <!-- 引入ECharts和水球图扩展 -->
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts-liquidfill@3.0.0/dist/echarts-liquidfill.min.js"></script>
     
-    <!-- 字体引入 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700&family=KaiTi+SC:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&amp;family=Noto+Serif+SC:wght@400;600;700&amp;family=KaiTi+SC:wght@300;400;700&amp;display=swap" rel="stylesheet">
     
-    <!-- Tailwind配置 -->
     <script>
         tailwind.config = {
             theme: {
@@ -40,7 +38,6 @@
         }
     </script>
     
-    <!-- 引入外部CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-paper font-noto text-ink overflow-x-hidden">
@@ -53,6 +50,7 @@
             我已在PC端，继续浏览
         </button>
     </div>
+
     <!-- 叠化过渡层 -->
     <div class="page-transition" id="pageTransition"></div>
      
@@ -63,22 +61,28 @@
             <path d="M50,10 C60,15 70,30 60,45 C50,60 50,60 50,60 C50,60 50,60 40,45 C30,30 40,15 50,10 Z" fill="#222222" opacity="0.9"></path>
         </svg>
     </div>
+
     <!-- 页面容器 -->
     <div class="relative z-10" id="mainContent" style="display: none;">
         <!-- 第一部分：全屏图片 -->
         <section class="min-h-screen flex items-center justify-center p-0 section-container relative overflow-hidden">
+                <!-- 使用指定图片链接，并添加更可靠的错误处理 -->
                 <img src="http://t0m73i2ks.hb-bkt.clouddn.com/11.jpg" 
                           alt="堆积的二手教材" 
+                          style="filter: brightness(1.2)"
                           class="absolute inset-0 w-full h-full object-cover"
                           onerror="this.src='https://picsum.photos/id/24/1920/1080'; this.onerror=null;">
          
+                <!-- 半透明遮罩增强后续内容可读性 -->
                 <div class="absolute inset-0 bg-dark/30 z-0"></div>
     
+                <!-- 保留向下滚动指示 -->
                 <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
                     <i class="fa fa-angle-down text-3xl text-white/70"></i>
                 </div>
         </section>
     
+
         <!-- 第二部分：开篇描述 -->
         <section class="min-h-screen flex items-center justify-center p-6 md:p-12 section-fade-in section-container relative">
             <div class="section-bg" id="section2-bg" style="background-image: url('http://t0m73i2ks.hb-bkt.clouddn.com/1.jpg'); opacity: 0.18;"></div>
@@ -110,7 +114,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- 第三部分：网民留言 -->
         <section class="min-h-screen flex items-center justify-center p-6 md:p-12 section-fade-in section-container relative">
             <div class="section-bg" id="section3-bg" style="background-image: url('http://t0m73i2ks.hb-bkt.clouddn.com/2.jpg'); opacity: 0.2;"></div>
@@ -148,7 +152,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- 第五部分：01循环受阻的教材生态（上） -->
         <section class="min-h-screen flex items-center justify-center p-6 md:p-12 section-fade-in section-container relative">
             <div class="section-bg" id="section5-bg" style="background-image: url('http://t0m73i2ks.hb-bkt.clouddn.com/3.jpg'); opacity: 0.22;"></div>
@@ -197,7 +201,7 @@
                 <p class="data-source">数据来源：中国民主促进会《关于在中小学推行教科书循环使用的建议》</p>
             </div>
         </section>
-        
+
         <!-- 第六部分：01循环受阻的教材生态（下） -->
         <section class="min-h-screen flex items-center justify-center p-6 md:p-12 section-fade-in section-container relative">
             <div class="section-bg" id="section6-bg" style="background-image: url('http://t0m73i2ks.hb-bkt.clouddn.com/4.jpg'); opacity: 0.2;"></div>
@@ -215,7 +219,8 @@
                         高校教材循环面临实际困难。学生自费购买导致教材分散，二手交易存在匹配成本高和版权问题。相比之下，美国通过电商平台实现了60%的教材循环使用率。佐治亚大学研究显示，这种方式可以帮学生节省27%的费用。此外，像内布拉斯加大学这样的高校，还通过图书馆免费借阅计划进一步减轻学生负担。这些做法值得借鉴。
                     </p>
                 </div>
-                
+
+                <!-- 新增的并排图片 -->
                 <div class="image-row-container">
                     <div class="image-row-item">
                         <img src="https://image-cdn.tuchong.com/weili/image/l/1073959871069814930.jpeg" alt="学生在图书馆查阅教材">
@@ -226,7 +231,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- 第七部分：02校园二手教材问卷全景分析（上） -->
         <section class="min-h-screen flex items-center justify-center p-6 md:p-12 section-fade-in section-container relative">
             <div class="section-bg" id="section7-bg" style="background-image: url('https://shujuxinwen-1373010310.cos.ap-chengdu.myqcloud.com/%E7%94%9F%E6%88%90%E7%BA%AF%E8%89%B2%E5%9B%BE.png');"></div>
@@ -242,7 +247,7 @@
                     </p>
                     
                     <p class="text-lg leading-relaxed mb-6 text-hover">
-                        在校园里，二手教材的推广似乎面临着一个尴尬的矛盾：绝大多数学生认同其价值，但真正付诸实践的人却有限。一项针对高校学生的调查显示，近86.36%的学生支持使用二手教材的理念，（其中 “非常赞同” 占 45.45%，“赞同” 占 40.91%），但其中仅有 36.36% 的人真正购买过二手书。而在那些表示支持却未行动的学生中，阻碍他们的主要因素集中在 “版本不符 / 过时风险”（47.73%）、“品相不佳（笔记 / 破损）”（38.64%），以及 “担心卫生问题”“渠道不便”（均为 27.27%）。
+                        在校园里，二手教材的推广似乎面临着一个尴尬的矛盾：绝大多数学生认同其价值，但真正付诸实践的人却有限。一项针对高校学生的调查显示，近86.36%的学生支持使用二手教材的理念，（其中 "非常赞同" 占 45.45%，"赞同" 占 40.91%），但其中仅有 36.36% 的人真正购买过二手书。而在那些表示支持却未行动的学生中，阻碍他们的主要因素集中在 "版本不符 / 过时风险"（47.73%）、"品相不佳（笔记 / 破损）"（38.64%），以及 "担心卫生问题"“渠道不便”（均为 27.27%）。
                     </p>
                 </div>
                 
@@ -264,7 +269,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- 第八部分：02校园二手教材问卷全景分析（下） -->
         <section class="min-h-screen flex items-center justify-center p-6 md:p-12 section-fade-in section-container relative">
             <div class="section-bg" id="section8-bg" style="background-image: url('https://shujuxinwen-1373010310.cos.ap-chengdu.myqcloud.com/%E7%94%9F%E6%88%90%E7%BA%AF%E8%89%B2%E5%9B%BE.png');"></div>
@@ -299,7 +304,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- 第九部分：03阻滞循环的生态瓶颈 -->
         <section class="min-h-screen flex items-center justify-center p-6 md:p-12 section-fade-in section-container relative">
             <div class="section-bg" id="section9-bg" style="background-image: url('http://t0m73i2ks.hb-bkt.clouddn.com/5.jpg'); opacity: 0.22;"></div>
@@ -330,8 +335,8 @@
                 </div>
             </div>
         </section>
-        
-        <section class="min-h-screen flex items-center justify-center p-6 md:p-12 section-fade-in section-container relative">
+
+       <section class="min-h-screen flex items-center justify-center p-6 md:p-12 section-fade-in section-container relative">
             <div class="section-bg" id="section9-bg" style="background-image: url('http://t0m73i2ks.hb-bkt.clouddn.com/6.jpg'); opacity: 0.18;"></div>
             <div class="max-w-3xl mx-auto">
                 <div class="flex items-center mb-8">
@@ -374,7 +379,7 @@
                     </p>
                     
                     <p class="text-lg leading-relaxed mb-6 text-hover">
-                        在大气污染方面，制浆造纸生产过程几乎每个工段或多或少会产生一些大气污染物，主要包括两类: 工艺过程中物料扬尘或喷放过程产生扩散及挥发性物质; 蒸发或燃烧过程产生的污染物。从成分来看包括粉尘、还原性含硫气体、氧化性含硫气体、Cl?、ClO?、CO?等。这些成分会直接或间接地导致酸雨，对生态环境破坏极大。
+                        在大气污染方面，制浆造纸生产过程几乎每个工段或多或少会产生一些大气污染物，主要包括两类: 工艺过程中物料扬尘或喷放过程产生扩散及挥发性物质; 蒸发或燃烧过程产生的污染物。从成分来看包括粉尘、还原性含硫气体、氧化性含硫气体、Cl₂、ClO₂、CO₂等。这些成分会直接或间接地导致酸雨，对生态环境破坏极大。
                     </p>
                     
                     <p class="text-lg leading-relaxed mb-6 text-hover">
@@ -395,7 +400,8 @@
                 </div>
                 <p class="data-source">数据来源：教育部《2019年全国教育事业发展统计公报》</p>
         </div></section>
-        
+
+        <!-- 第十部分：环保意义 -->
         <section class="min-h-screen flex items-center justify-center p-6 md:p-12 section-fade-in section-container relative">
             <div class="section-bg" id="section11-bg" style="background-image: url('http://t0m73i2ks.hb-bkt.clouddn.com/8.jpg'); opacity: 0.18;"></div>
             <div class="max-w-3xl mx-auto">
@@ -414,8 +420,9 @@
                     <p class="text-lg leading-relaxed mb-6 text-hover">
                         根据教育部发布的《2019年全国教育事业发展统计公报》，2019年我国在校中小学生人数约为1.94亿，以每个学生一年两学期平均使用10册课本计算，一年就要用课本20亿册以上。按每人每学期课本平均重1500克计算，如果课本连续使用5年，可节约528万吨文化纸，生产这些纸要耗费300万亩木材、52800万吨纯净水和633.5万吨煤。
                     </p>
-                    
-                    <div class="image-row-container">
+
+                   <!-- 新增的并排图片 -->
+                   <div class="image-row-container">
                          <div class="image-row-item">
                                <img src="https://image-cdn.tuchong.com/weili/image/l/903322710072885266.jpeg" alt="造纸厂对环境的污染">
                         </div>
@@ -424,7 +431,7 @@
                        </div>
                </div>
  </div></section>
-        
+
         <!-- 第十一部分：全球意义 -->
 <section class="min-h-screen flex items-center justify-center p-6 md:p-12 section-fade-in section-container relative">
     <div class="section-bg" id="section11-bg" style="background-image: url('http://t0m73i2ks.hb-bkt.clouddn.com/9.jpg'); opacity: 0.18;"></div>
@@ -451,7 +458,7 @@
                 </div>
             
         </section>
-        
+
         <!-- 第十二部分：数据与方法论 -->
         <section class="min-h-screen flex items-center justify-center p-6 md:p-12 section-fade-in section-container relative">
             <div class="section-bg" id="section12-bg" style="background-image: url('http://t0m73i2ks.hb-bkt.clouddn.com/10.jpg'); opacity: 0.18;"></div>
@@ -497,9 +504,8 @@
                 </div>
             </div>
         </section>
-    </div>
-
-    <!-- 引入外部JavaScript -->
+    
     <script src="script.js"></script>
+    </div>
 </body>
 </html>

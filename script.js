@@ -53,7 +53,7 @@ function initMainContent() {
         const corner = getRandomCorner(section);
         
         // 设置墨蝶位置
-        butterfly.style.top = `${rect.top + window.scrollY + (corner.top? parseInt(corner.top) : 0)}px`;
+        butterfly.style.top = `${rect.top + window.scrollY + (corner.top ? parseInt(corner.top) : 0)}px`;
         butterfly.style.left = corner.left || 'auto';
         butterfly.style.right = corner.right || 'auto';
         butterfly.style.bottom = corner.bottom || 'auto';
@@ -72,7 +72,7 @@ function initMainContent() {
     // 初始化页面 - 仅第一页可见，其他页隐藏
     sections.forEach((section, index) => {
         section.classList.add('section-wrapper');
-        if (index!== 0) {
+        if (index !== 0) {
             section.style.opacity = '0'; // 初始隐藏非首屏内容
         }
     });
@@ -131,7 +131,7 @@ function initMainContent() {
     // 初始化滚动检测 - 立即检查并显示第一页
     setTimeout(() => {
         const initialIndex = getCurrentSection();
-        if (initialIndex!== currentSectionIndex) {
+        if (initialIndex !== currentSectionIndex) {
             triggerTransition(initialIndex);
         }
     }, 100);
@@ -280,7 +280,7 @@ function initRadiusChart() {
                     }
                 },
                 data: data.map((item, index) => ({
-                   ...item,
+                    ...item,
                     itemStyle: { color: colors[index] }
                 }))
             }
@@ -376,6 +376,8 @@ function initSupportPurchaseChart() {
 
 // 图表初始化函数
 function initCharts() {
+    // 教材回收模式对比图表已删除
+    
     // 学生对二手教材的态度图表
     initChart('学生对二手教材的态度', 'bar', {
         labels: ['支持理念', '实际购买'],
@@ -433,4 +435,79 @@ function initCharts() {
     initChart('二手教材获取途径', 'doughnut', {
         labels: ['同学转手', '校园跳蚤市场', '专业二手平台', '其他'],
         datasets: [{
-            data: [52, 30,
+            data: [52, 30, 18, 0],
+            backgroundColor: [
+                'rgba(140, 28, 19, 0.6)',
+                'rgba(60, 120, 90, 0.6)',
+                'rgba(50, 100, 150, 0.6)',
+                'rgba(150, 150, 150, 0.6)'
+            ],
+            borderColor: [
+                'rgba(140, 28, 19, 1)',
+                'rgba(60, 120, 90, 1)',
+                'rgba(50, 100, 150, 1)',
+                'rgba(150, 150, 150, 1)'
+            ],
+            borderWidth: 1
+        }]
+    }, {
+        responsive: true
+    });
+    
+    // 教材循环环保效益图表
+    initChart('教材循环环保效益', 'bar', {
+        labels: ['文化纸', '木材', '纯净水', '煤'],
+        datasets: [{
+            label: '5年循环使用可节约资源（万吨）',
+            data: [528, 300, 52800, 633.5],
+            backgroundColor: 'rgba(140, 28, 19, 0.6)',
+            borderColor: 'rgba(140, 28, 19, 1)',
+            borderWidth: 1
+        }]
+    }, {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: '单位：万吨（水为万吨）'
+                }
+            }
+        }
+    });
+}
+
+// 图表初始化辅助函数
+function initChart(canvasId, type, data, options) {
+    const canvas = document.getElementById(canvasId);
+    if (canvas) {
+        new Chart(canvas, {
+            type: type,
+            data: data,
+            options: options
+        });
+    }
+}
+
+// 移动端背景图兼容性处理
+function handleMobileBackgrounds() {
+    if (window.innerWidth <= 768) {
+        const backgroundImages = document.querySelectorAll('.section-bg');
+        backgroundImages.forEach(img => {
+            // 强制应用背景图属性
+            img.style.backgroundImage = img.style.backgroundImage;
+            img.style.backgroundSize = 'cover';
+            img.style.backgroundPosition = 'center';
+            img.style.backgroundRepeat = 'no-repeat';
+            img.style.opacity = '0.15';
+        });
+    }
+}
+
+// 窗口大小改变时重新处理
+window.addEventListener('resize', function() {
+    if (document.getElementById('mainContent').style.display === 'block') {
+        handleMobileBackgrounds();
+    }
+});
